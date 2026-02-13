@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bs2ee7xwhq3iv"]
+
+[ext_resource type="Script" uid="uid://di7nec8q2qu8x" path="res://Scripts/hud.gd" id="1_5kp3n"]
+[ext_resource type="Shader" uid="uid://cy7q0fyurob24" path="res://Shaders/hud.gdshader" id="1_g0xie"]
+[ext_resource type="Texture2D" uid="uid://dds8pm5jckyq2" path="res://Assets/Images/heart pixel art 64x64.png" id="1_s3bvw"]
+[ext_resource type="AudioStream" uid="uid://tujnwg55ytdv" path="res://Assets/Audio/typing.wav" id="4_pi1dj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kp3n"]
+shader = ExtResource("1_g0xie")
+shader_parameter/Angle_deg = 30.0
+shader_parameter/Brightness = 2.5
+shader_parameter/Band_Soft = 0.06
+shader_parameter/Stage_Count = 2
+shader_parameter/Stage1_Duration = 1.0
+shader_parameter/Stage2_Duration = 1.5
+shader_parameter/Stage3_Duration = 1.0
+shader_parameter/Stage1_Width = 0.12
+shader_parameter/Stage2_Width = 0.12
+shader_parameter/Stage3_Width = 0.12
+shader_parameter/Stage1_LeftToRight = false
+shader_parameter/Stage2_LeftToRight = false
+shader_parameter/Stage3_LeftToRight = false
+shader_parameter/One_Shot = false
+shader_parameter/OneShot_Delay = 0.0
+shader_parameter/Phase_Offset = 0.0
+shader_parameter/Wiggle_Angle = false
+shader_parameter/Wiggle_Amount_deg = 15.0
+shader_parameter/Shine_Pause = 1.0000000475
+
+[node name="HUD" type="CanvasLayer" unique_id=1597939021]
+script = ExtResource("1_5kp3n")
+
+[node name="TextBox" type="MarginContainer" parent="." unique_id=1145050652]
+offset_top = 1480.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="TextBox" unique_id=305951199]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextBox" unique_id=903174352]
+custom_minimum_size = Vector2(450, 350)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 1
+clip_text = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=661867661]
+offset_right = 67.0
+offset_bottom = 45.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2049596348]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=978030240]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0/100"
+
+[node name="Heart" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=115576110]
+material = SubResource("ShaderMaterial_5kp3n")
+layout_mode = 2
+texture = ExtResource("1_s3bvw")
+expand_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1018116963]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=715772587]
+stream = ExtResource("4_pi1dj")

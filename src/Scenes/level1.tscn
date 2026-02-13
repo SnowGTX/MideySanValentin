@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cjxdufdumc30w"]
+
+[ext_resource type="Texture2D" uid="uid://pqspvdibcguj" path="res://Assets/Images/Base.png" id="1_4hvuo"]
+[ext_resource type="Script" uid="uid://c6yng15yv2fkf" path="res://Scripts/level_1_controller.gd" id="1_c5erv"]
+[ext_resource type="PackedScene" uid="uid://bs2ee7xwhq3iv" path="res://Prefabs/hud.tscn" id="3_lyd6k"]
+[ext_resource type="AudioStream" uid="uid://db1y6mtqjvcum" path="res://Assets/Audio/music2.mp3" id="4_lyd6k"]
+
+[node name="Game" type="Control" unique_id=647337504 node_paths=PackedStringArray("control_hud", "character", "character_sounds")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c5erv")
+control_hud = NodePath("HUD")
+character = NodePath("Character")
+character_sounds = NodePath("AudioStreamPlayer2D")
+
+[node name="Character" type="TextureRect" parent="." unique_id=228881727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4hvuo")
+
+[node name="HUD" parent="." unique_id=1597939021 instance=ExtResource("3_lyd6k")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1218875503]
+stream = ExtResource("4_lyd6k")
+volume_db = -10.0
+autoplay = true
+
+[node name="CharacterSounds" type="AudioStreamPlayer2D" parent="." unique_id=276819176]
